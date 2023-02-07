@@ -7,18 +7,35 @@
 <meta charset="UTF-8">
 <title>main</title>
  <style>
-      span{
-        border: solid grey;        
-      }
-      #guestcount{
-       font-size: 1.2em
-      }
-    </style>
+ .form-inline {
+   flex-flow: row wrap;
+   align-items: center;
+ }
+
+.form-inline input {
+  vertical-align: middle;
+  margin: 1px 1px 1px 0;
+  padding: 2px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+.form-inline textarea {
+  vertical-align: middle;
+  margin: 5px 10px 5px 0;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+</style>
     
 </head>
 <body>
-<form method="post" action="write" id="guestform">
-name : <input type="text" name ="name"><br>
+<form method="post" class="form-inline" action="write" id="guestform">
+<label for="name">이름 :</label>
+<input  type="text" name ="name"><br>
+<label for="pwd">비밀번호 :</label>
+<input type = "password" name="password"> <br>
 <textarea rows="10" cols="50" name="content"form ="guestform"></textarea>
 <br>
 <input type="submit" value="등록" >
@@ -26,11 +43,11 @@ name : <input type="text" name ="name"><br>
 <br>
 <br>
 <c:forEach items="${list}" var="guestbook">
-${guestbook.id}<br>
+${guestbook.no}<br>
 ${guestbook.name}<br>
 ${guestbook.content}<br>
-${guestbook.regdate}<br>
-<a href="delete?id=${guestbook.id}"> 삭제</a><br><br>
+${guestbook.reg_date}<br>
+<a href="delete?no=${guestbook.no}"> 삭제</a><br><br>
 </c:forEach>
 <br>
 
